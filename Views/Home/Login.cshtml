@@ -1,0 +1,73 @@
+﻿@model Freelancer.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<link href="~/css/Login.css" rel="stylesheet" />
+<!-- Login Section-->
+<section class="page-section bg-primary text-white mb-0" id="login">
+    <div class="container">
+        <!-- Login Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">Login</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Login Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-xl-5">
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <div asp-validation-summary="All" class="text-white mb-0"></div>
+                    </div>
+                }
+
+                <form asp-controller="Account" asp-action="Login" method="post" id="loginForm">
+                    @Html.AntiForgeryToken()
+
+                    <!-- Email input-->
+                    <div class="form-floating mb-3 login-form-floating">
+                        <input asp-for="Email" class="form-control" placeholder="name@example.com" />
+                        <label asp-for="Email"></label>
+                        <span asp-validation-for="Email" class="invalid-feedback d-block"></span>
+                    </div>
+
+                    <!-- Password input-->
+                    <div class="form-floating mb-3 login-form-floating">
+                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                        <label asp-for="Password"></label>
+                        <span asp-validation-for="Password" class="invalid-feedback d-block"></span>
+                    </div>
+
+                    <!-- Remember me / forgot password-->
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+                        <a class="login-link" asp-controller="Account" asp-action="ForgotPassword">Forgot password?</a>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <div class="d-grid">
+                        <button class="btn btn-light btn-xl text-uppercase" id="loginSubmitButton" type="submit">Log In</button>
+                    </div>
+
+                    <!-- Sign up prompt-->
+                    <p class="text-center mt-4 mb-0">
+                        Don't have an account?
+                        <a class="login-link" asp-controller="Account" asp-action="Register">Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

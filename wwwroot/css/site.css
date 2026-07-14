@@ -595,7 +595,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: "ï¿½ï¿½";
 }
 
 .img-fluid {
@@ -11044,3 +11044,8 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+/* ==========================================================================
+   Login Section
+   Add this file after css/styles.css, e.g.:
+   <link href="~/css/login.css" rel="stylesheet" />
+   ========================================================================== */
