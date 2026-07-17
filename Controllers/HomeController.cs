@@ -21,7 +21,10 @@ namespace FASS.Controllers
         {
             return View();
         }
-
+        public IActionResult Signup()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
